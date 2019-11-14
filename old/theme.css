@@ -1,0 +1,108 @@
+html {
+    margin: 0 !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+    padding: 0 !important;
+	background: black;
+	color: rgb(10, 187, 10);
+	text-align:center;
+	background-size: cover;
+	
+	background: black;
+	//background-image: url("web.svg") no-repeat center center fixed;
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+	background-size: 100% 100%; 
+	background-repeat: no-repeat;
+	//width: 100%; 
+    height: 100%; 
+	background-position: center; /* Center the image */
+}
+body {
+	//background-size: cover;
+	//background-image: url("web.svg");
+	//background-size: 100% 100%; 
+	background: black;
+	//width: 2%; 
+    height: 98%;
+	color: rgb(10, 187, 10);
+}
+h1 {
+	line-height: 0px;
+	vertical-align: middle;
+	position: relative;
+	font-size: 500%;
+	background: rgb(0, 0, 0);
+	//opacity: 1;
+	color: rgb(255, 255, 200);
+	text-decoration: none;
+	//border: 19px solid dark blue;
+}
+a {
+	background: white;
+	vertical-align: middle;
+	position: relative;
+	font-size: 525%;
+	background: rgb(0, 0, 0);
+	//opacity: 1;
+	color: rgb(255, 15, 15);
+	text-decoration: none;
+	border: 19px solid dark blue;
+	transition = "color 2s"; 
+}
+a:hover {
+	//font-size: 250%;
+	//opacity: 1;
+	//filter: blur(5px);
+	color: rgb(10, 187, 10);
+	//background: rbg(255, 255, 255);
+	transition = "all 2s"; 
+}
+button {
+	background: white;
+	vertical-align: middle;
+	position: relative;
+	font-size: 525%;
+	background: rgb(40, 50, 40);
+	//opacity: 1;
+	color: red;
+	text-decoration: none;
+	border: 19px solid dark blue;
+	border: none;
+	margin: 0;
+	margin-top: 0;
+	padding-top: 0;
+	padding: 0;
+	transition = "background 2s"; 
+}
+button:hover {
+	transition = "all 2s"; 
+	//font-size: 250%;
+	//opacity: 1;
+	//filter: blur(5px);
+	color: green;
+	background: black;
+	border: none;
+}
+.parallax {
+  /* The image used */
+  background-image: url('banner.png');
+
+  /* Full height */
+  height: 90%; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
