@@ -78,21 +78,21 @@ body, html {
     <a class="w3-bar-item w3-button w3-hover-white w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="#home" class="w3-bar-item w3-button">juhlaboxi</a>
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="#Tilaa" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> TILAA</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> OTA YHTEYTTÄ</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+    <a href="index.html#home" class="w3-bar-item w3-button">juhlaboxi</a>
+    <a href="index.html#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
+    <a href="index.html#Tilaa" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> TILAA</a>
+    <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> OTA YHTEYTTÄ</a>
+    <a href="index.html#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
     </a>
   </div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-black w3-text-green w3-hide w3-hide-large w3-hide-medium">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="#Tilaa" class="w3-bar-item w3-button" onclick="toggleFunction()">TILAA</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">OTA YHTEYTTÄ</a>
-    <a href="#" class="w3-bar-item w3-button">HAKU</a>
+    <a href="index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+    <a href="index.html#Tilaa" class="w3-bar-item w3-button" onclick="toggleFunction()">TILAA</a>
+    <a href="index.html#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">OTA YHTEYTTÄ</a>
+    <a href="index.html#" class="w3-bar-item w3-button">HAKU</a>
   </div>
 </div>
 
@@ -109,24 +109,24 @@ body, html {
 <!-- Container (Portfolio Section) -->
 <div class="w3-content w3-container w3-padding-64" id="Tilaa">
 <h3 class="w3-center">Tilausvalmiit vaihtoehdot</h3>
-  <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
+  <p class="w3-center"><em>Tässä ovat tilausvaihtoehtomme.<br> Klikkaa kuvasta saadaksesi tietää lisää <span class="w3-hide-large"><br \></span>tai lisätäksesi sen ostoskärryysi!</em></p><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="width:100%;filter:hue-rotate(0deg);" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A" id="nu1">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="width:100%;filter:hue-rotate(45deg);" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi B" id="nu2">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="width:100%;filter:hue-rotate(90deg);" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi C" id="nu3">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="width:100%;filter:hue-rotate(180deg);" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi D" id="nu4">
     </div>
   </div>
 
@@ -146,7 +146,7 @@ body, html {
     <div class="w3-col m3">
       <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
     </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TILAA NYT!</button>
+    <!--<button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TILAA NYT!</button>-->
   </div>
 </div>
 <!-- Modal for full size images on click-->
@@ -156,6 +156,9 @@ body, html {
     <div style="background:black;width: 100%; height:100%; border: dotted 2px #4caf50;">
 	<h1 id="caption" class="w3-large w3-text-white"></h1>
 	<div class="row">
+		<div class="w3-hide-medium w3-hide-large column">
+    			<img id="img02" style="width:50%;height:50%"></img>
+		</div>
 		<div class="column">
 			<h3 class="w3-green"> Sisältää </h3>
 			<ul class="w3-ul w3-green">
@@ -179,7 +182,7 @@ body, html {
 			    </li>
 			</ul>
 		</div>
-		<div class="column">
+		<div class="w3-hide-small column">
     			<img id="img01" style="width:100%;height:100%"></img>
 		</div>
 		<div class="column">
@@ -207,10 +210,15 @@ body, html {
 </footer>
  
 <script>
-alert("Made for a school project. This is not a real product!");
+console.log("made by Elias Eskelinen")
+console.log("This is a school project, not an actual product")
+//alert("Made for a school project. This is not a real product!");
 // Modal Image Gallery
 function onClick(element) {
   document.getElementById("img01").src = element.src;
+  document.getElementById("img02").src = element.src;
+  document.getElementById("img01").style.filter = element.style.filter;
+  document.getElementById("img02").style.filter = element.style.filter;
   document.getElementById("modal01").style.display = "block";
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
@@ -248,6 +256,81 @@ function toggleFunction() {
     } else {
         x.className = x.className.replace(" w3-show", "");
     }
+}
+function getAllUrlParams(url) {
+
+  // get query string from url (optional) or window
+  var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+
+  // we'll store the parameters here
+  var obj = {};
+
+  // if query string exists
+  if (queryString) {
+
+    // stuff after # is not part of query string, so get rid of it
+    queryString = queryString.split('#')[0];
+
+    // split our query string into its component parts
+    var arr = queryString.split('&');
+
+    for (var i = 0; i < arr.length; i++) {
+      // separate the keys and the values
+      var a = arr[i].split('=');
+
+      // set parameter name and value (use 'true' if empty)
+      var paramName = a[0];
+      var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+
+      // (optional) keep case consistent
+      paramName = paramName.toLowerCase();
+      if (typeof paramValue === 'string') paramValue = paramValue.toLowerCase();
+
+      // if the paramName ends with square brackets, e.g. colors[] or colors[2]
+      if (paramName.match(/\[(\d+)?\]$/)) {
+
+        // create key if it doesn't exist
+        var key = paramName.replace(/\[(\d+)?\]/, '');
+        if (!obj[key]) obj[key] = [];
+
+        // if it's an indexed array e.g. colors[2]
+        if (paramName.match(/\[\d+\]$/)) {
+          // get the index value and add the entry at the appropriate position
+          var index = /\[(\d+)\]/.exec(paramName)[1];
+          obj[key][index] = paramValue;
+        } else {
+          // otherwise add the value to the end of the array
+          obj[key].push(paramValue);
+        }
+      } else {
+        // we're dealing with a string
+        if (!obj[paramName]) {
+          // if it doesn't exist, create property
+          obj[paramName] = paramValue;
+        } else if (obj[paramName] && typeof obj[paramName] === 'string'){
+          // if property does exist and it's a string, convert it to an array
+          obj[paramName] = [obj[paramName]];
+          obj[paramName].push(paramValue);
+        } else {
+          // otherwise add the property
+          obj[paramName].push(paramValue);
+        }
+      }
+    }
+  }
+
+  return obj;
+}
+var stuff = getAllUrlParams(window.location + '');
+console.log(stuff);
+if(stuff.hasOwnProperty("p")){
+  console.log("found a product redirect parameter!");
+  var nu = stuff.p;
+  console.log("property: " + nu)
+  var elem = document.getElementById("nu" + nu);
+  console.log("opening appropriate product...");
+  onClick(elem);
+  console.log("Done.")
 }
 
 //accordion effects

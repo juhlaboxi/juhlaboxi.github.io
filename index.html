@@ -45,11 +45,16 @@ body, html {
 .w3-wide {letter-spacing: 10px;}
 .w3-hover-opacity {cursor: pointer;}
 
+.tilaa{width: 100%;}
+
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1600px) {
   .bgimg-1, .bgimg-2, .bgimg-3 {
     background-attachment: scroll;
     min-height: 400px;
+  }
+  .tilaa {
+    /*width: 0%;*/
   }
 }
 .strokeme {
@@ -57,6 +62,7 @@ body, html {
   text-shadow: 1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000;
 }
 </style>
+
 <body>
 
 <!-- Navbar (sit on top) -->
@@ -88,7 +94,7 @@ body, html {
   <div class="w3-display-middle" style="white-space:nowrap;">
     <span class="w3-xxxlarge w3-text-white strokeme w3-wide" style>juhlaboxi <span class="w3-hide-small"> </span> </span>
 	<br \>
-	<span class="w3-center w3-padding-small w3-black w3-large w3-narrow w3-animate-opacity w3-text-white">kun haluat vain hyvää juhlatunnelmaa. <span class="w3-hide-large"><br \></span>Ilman sähläystä.</span>
+	<span class="w3-center w3-padding-small w3-black w3-large w3-narrow w3-animate-opacity w3-text-white">Kun haluat vain hyvää juhlatunnelmaa,  <span class="w3-hide-large"><br \></span>ilman sähläystä.</span>
   </div>
 </div>
 
@@ -157,42 +163,43 @@ body, html {
 <!-- Container (Portfolio Section) -->
 <div class="w3-content w3-container w3-padding-64 w3-black w3-text-white" id="Tilaa">
   <h3 class="w3-center">Tilausvalmiit vaihtoehdot</h3>
-  <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
+  <p class="w3-center"><em>Tässä on joitakin valmiita boxejamme.<br> Klikkaa boxin kuvasta saadaksesi tietää lisää!</em></p><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <button class="w3-center w3-button w3-green w3-block" onclick="window.open('tilaa.html');">Katso kaikki vaihtoehdot <span class="w3-hide-large"><br \></span>tai koko omasi painamalla tästä!</button>
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="filter:hue-rotate(0deg);" onclick="window.open('tilaa.html?p=1')" class="w3-hover-opacity tilaa" alt="boxi A">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="filter:hue-rotate(45deg);" onclick="window.open('tilaa.html?p=2')" class="w3-hover-opacity tilaa" alt="boxi B">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="filter:hue-rotate(90deg);" onclick="window.open('tilaa.html?p=3')" class="w3-hover-opacity tilaa" alt="boxi C">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="filter:hue-rotate(180deg);" onclick="window.open('tilaa.html?p=4')" class="w3-hover-opacity tilaa" alt="boxi D">
     </div>
   </div>
 
-  <div class="w3-row-padding w3-center w3-section">
+  <div class="w3-row-padding w3-center w3-section w3-hide-small">
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" onclick="onClick(this)" class="w3-hover-opacity tilaa" alt="boxi A">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" onclick="onClick(this)" class="w3-hover-opacity tilaa" alt="boxi A">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" onclick="onClick(this)" class="w3-hover-opacity tilaa" alt="boxi A">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" onclick="onClick(this)" class="w3-hover-opacity tilaa" alt="boxi A">
     </div>
   </div>
 </div>
