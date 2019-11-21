@@ -11,7 +11,8 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
   height: 100%;
-  color: #00000;
+  color: white;
+  background: black;
   line-height: 1.8;
 }
 
@@ -31,13 +32,13 @@ body, html {
 
 /* Second image (Portfolio) */
 .bgimg-2 {
-  background-image: url("/w3images/parallax2.jpg");
+  background-image: url("xmas.jpeg");
   min-height: 400px;
 }
 
 /* Third image (Contact) */
 .bgimg-3 {
-  background-image: url("/w3images/parallax3.jpg");
+  background-image: url("helsinki.webp");
   min-height: 400px;
 }
 
@@ -55,9 +56,9 @@ body, html {
 <body>
 
 <!-- Navbar (sit on top) -->
-<div class="w3-top">
+<div class="w3-top w3-black w3-text-green">
   <div class="w3-bar" id="myNavbar">
-    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+    <a class="w3-bar-item w3-button w3-hover-white w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
     <a href="#home" class="w3-bar-item w3-button">juhlaboxi</a>
@@ -70,7 +71,7 @@ body, html {
   </div>
 
   <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+  <div id="navDemo" class="w3-bar-block w3-black w3-text-green w3-hide w3-hide-large w3-hide-medium">
     <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
     <a href="#Tilaa" class="w3-bar-item w3-button" onclick="toggleFunction()">TILAA</a>
     <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">OTA YHTEYTTÄ</a>
@@ -81,14 +82,14 @@ body, html {
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">juhlaboxi <span class="w3-hide-small"> </span> </span>
+    <span class="w3-xxxlarge w3-text-black w3-red w3-wide"><strong>juhlaboxi </strong><span class="w3-hide-small"> </span> </span>
 	<br \>
-	<span class="w3-center w3-padding-small w3-black w3-large w3-narrow w3-animate-opacity">kun haluat vain hyvää juhlatunnelmaa. <span class="w3-hide-large"><br \></span>Ilman sähläystä.</span>
+	<span class="w3-center w3-padding-small w3-black w3-large w3-narrow w3-animate-opacity w3-text-white">kun haluat vain hyvää juhlatunnelmaa. <span class="w3-hide-large"><br \></span>Ilman sähläystä.</span>
   </div>
 </div>
 
 <!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
+<div class="w3-content w3-container w3-padding-64 w3-black w3-text-white" id="about">
   <h3 class="w3-center">About</h3>
   <p class="w3-center"><em></em></p>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -144,12 +145,13 @@ body, html {
 <!-- Second Parallax Image with Portfolio Text -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-black w3-wide">TILAA</span>
+    <span class="w3-xxlarge w3-text-white w3-wide w3-green">TILAA</span>
+
   </div>
 </div>
 
 <!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="Tilaa">
+<div class="w3-content w3-container w3-padding-64 w3-black w3-text-white" id="Tilaa">
   <h3 class="w3-center">Tilausvalmiit vaihtoehdot</h3>
   <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
 
@@ -188,7 +190,6 @@ body, html {
     <div class="w3-col m3">
       <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
     </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TILAA NYT!</button>
   </div>
 </div>
 
@@ -202,14 +203,14 @@ body, html {
 </div>
 
 <!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
+<div class="bgimg-3 w3-display-container w3-opacity-min ">
   <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-black w3-wide">haluatko ottaa yhteyttä?</span>
+     <span class="w3-xxlarge w3-text-white w3-wide w3-black">haluatko ottaa yhteyttä?</span>
   </div>
 </div>
 
 <!-- Container (Contact Section) -->
-<div class="w3-content w3-container w3-padding-64" id="contact">
+<div class="w3-content w3-container w3-padding-64 w3-black w3-text-white" id="contact">
   <h3 class="w3-center">Mistä meidät löytää</h3>
   <p class="w3-center"><em>Rakastamme palautetta!</em></p>
 
@@ -258,7 +259,7 @@ body, html {
 </footer>
  
 <script>
-alert("Made for a school project. This is not a real product!");
+//alert("Made for a school project. This is not a real product!");
 // Modal Image Gallery
 function onClick(element) {
   document.getElementById("img01").src = element.src;
@@ -272,9 +273,9 @@ window.onscroll = function() {myFunction()};
 function myFunction() {
     var navbar = document.getElementById("myNavbar");
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-black" + " w3-text-green";
     } else {
-        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-black w3-text-green", "");
     }
 }
 
