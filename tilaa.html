@@ -364,4 +364,27 @@ for (i2 = 0; i2 < acc2.length; i2++) {
   newText.appendChild(node);
   acc2[i2].parentNode.insertBefore( newText, acc2[i2].nextSibling );
 } 
+function resiz(){
+  var iss = document.getElementById("isSmall");
+  var acc2 = document.getElementsByClassName("wowimg");
+  var i2;
+  var scal = 100;
+  if(isHidden(iss)){
+    console.log("hidden");
+    scal = 30;
+    
+  }
+  else{
+    console.log("not hidden");
+    scal = 100;
+  }
+  for (i2 = 0; i2 < acc2.length; i2++) {
+    acc2[i2].style.width = scal + "%";
+    acc2[i2].style.height = scal + "%";
+  } 
+}
+window.addEventListener('resize', function(event){
+  resiz();
+});
+resiz();
 </script>
