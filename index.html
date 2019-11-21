@@ -169,19 +169,19 @@ body, html {
   <button class="w3-center w3-button w3-green w3-block" onclick="window.open('tilaa.html');">Katso kaikki vaihtoehdot <span class="w3-hide-large"><br \></span>tai koko omasi painamalla tästä!</button>
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="boxiA.png" style="filter:hue-rotate(0deg);" onclick="window.open('tilaa.html?p=1')" class="w3-hover-opacity tilaa" alt="boxi A">
+      <img src="boxiA.png" style="filter:hue-rotate(0deg);" onclick="window.open('tilaa.html?p=1')" class="w3-hover-opacity tilaa wowimg" alt="boxi A">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="filter:hue-rotate(45deg);" onclick="window.open('tilaa.html?p=2')" class="w3-hover-opacity tilaa" alt="boxi B">
+      <img src="boxiA.png" style="filter:hue-rotate(45deg);" onclick="window.open('tilaa.html?p=2')" class="w3-hover-opacity tilaa wowimg" alt="boxi B">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="filter:hue-rotate(90deg);" onclick="window.open('tilaa.html?p=3')" class="w3-hover-opacity tilaa" alt="boxi C">
+      <img src="boxiA.png" style="filter:hue-rotate(90deg);" onclick="window.open('tilaa.html?p=3')" class="w3-hover-opacity tilaa wowimg" alt="boxi C">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="filter:hue-rotate(180deg);" onclick="window.open('tilaa.html?p=4')" class="w3-hover-opacity tilaa" alt="boxi D">
+      <img src="boxiA.png" style="filter:hue-rotate(180deg);" onclick="window.open('tilaa.html?p=4')" class="w3-hover-opacity tilaa wowimg" alt="boxi D">
     </div>
   </div>
 
@@ -299,6 +299,17 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+//Add subtitles
+var acc2 = document.getElementsByClassName("wowimg");
+var i2;
+console.log(acc2);
+
+for (i2 = 0; i2 < acc2.length; i2++) {
+  var newText = document.createElement("p");
+  var node = document.createTextNode(acc2[i2].alt);
+  newText.appendChild(node);
+  acc2[i2].parentNode.insertBefore( newText, acc2[i2].nextSibling );
+} 
 </script>
 
 </body>

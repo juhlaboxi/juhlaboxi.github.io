@@ -114,19 +114,19 @@ body, html {
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%;filter:hue-rotate(0deg);" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A" id="nu1">
+      <img src="boxiA.png" style="width:100%;filter:hue-rotate(0deg);" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%;filter:hue-rotate(45deg);" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi B" id="nu2">
+      <img src="boxiA.png" style="width:100%;filter:hue-rotate(45deg);" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi B" id="nu2">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%;filter:hue-rotate(90deg);" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi C" id="nu3">
+      <img src="boxiA.png" style="width:100%;filter:hue-rotate(90deg);" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi C" id="nu3">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%;filter:hue-rotate(180deg);" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi D" id="nu4">
+      <img src="boxiA.png" style="width:100%;filter:hue-rotate(180deg);" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi D" id="nu4">
     </div>
   </div>
 
@@ -351,5 +351,17 @@ for (i = 0; i < acc.length; i++) {
       panel.style.display = "block";
     }
   });
+} 
+
+//Add subtitles
+var acc2 = document.getElementsByClassName("wowimg");
+var i2;
+console.log(acc2);
+
+for (i2 = 0; i2 < acc2.length; i2++) {
+  var newText = document.createElement("p");
+  var node = document.createTextNode(acc2[i2].alt);
+  newText.appendChild(node);
+  acc2[i2].parentNode.insertBefore( newText, acc2[i2].nextSibling );
 } 
 </script>
