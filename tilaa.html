@@ -70,6 +70,19 @@ body, html {
     width: 100%;
   }
 }
+.outline-gradient { 
+    width: 400px;
+    padding: 20px;
+    border-top: 10px solid #47c465;
+    border-bottom:10px solid #00deff;
+    background-image: 
+        linear-gradient(#47c465, #00deff),
+        linear-gradient(#47c465, #00deff)
+    ;
+    background-size:10px 100%;
+    background-position:0 0, 100% 0;
+    background-repeat:no-repeat;
+}
 }
 </style>
 <!-- Navbar (sit on top) -->
@@ -82,8 +95,8 @@ body, html {
     <a href="index.html#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
     <a href="index.html#Tilaa" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> TILAA</a>
     <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> OTA YHTEYTTÄ</a>
-    <a href="index.html#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      <i class="fa fa-search"></i>
+    <a class="w3-bar-item w3-button w3-right w3-hover-red" onclick="showCart();">
+      <i class="fa fa-shopping-cart"><p id="car">(0)</p></i>
     </a>
   </div>
 
@@ -92,7 +105,6 @@ body, html {
     <a href="index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
     <a href="index.html#Tilaa" class="w3-bar-item w3-button" onclick="toggleFunction()">TILAA</a>
     <a href="index.html#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">OTA YHTEYTTÄ</a>
-    <a href="index.html#" class="w3-bar-item w3-button">HAKU</a>
   </div>
 </div>
 
@@ -108,6 +120,7 @@ body, html {
 </div>
 <!-- Container (Portfolio Section) -->
 <div class="w3-content w3-container w3-padding-64" id="Tilaa">
+<div class="w3-hide-small" id="isSmall"> </div>
 <h3 class="w3-center">Tilausvalmiit vaihtoehdot</h3>
   <p class="w3-center"><em>Tässä ovat tilausvaihtoehtomme.<br> Klikkaa kuvasta saadaksesi tietää lisää <span class="w3-hide-large"><br \></span>tai lisätäksesi sen ostoskärryysi!</em></p><br>
 
@@ -132,19 +145,19 @@ body, html {
 
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="boxi A">
+      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
     </div>
     <!--<button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TILAA NYT!</button>-->
   </div>
@@ -155,9 +168,15 @@ body, html {
   <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-0">
     <div style="background:black;width: 100%; height:100%; border: dotted 2px #4caf50;">
 	<h1 id="caption" class="w3-large w3-text-white"></h1>
+	<p class="CID" id="CID"></p>
 	<div class="row">
 		<div class="w3-hide-medium w3-hide-large column">
     			<img id="img02" style="width:50%;height:50%"></img>
+		</div>
+		<div class="w3-hide-medium w3-hide-large column">
+    			<p id="tuotekuvaus_lyhyt">
+			lyhyt tuotekuvaus lyhyt tuotekuvaus
+			</p>
 		</div>
 		<div class="column">
 			<h3 class="w3-green"> Sisältää </h3>
@@ -186,7 +205,12 @@ body, html {
     			<img id="img01" style="width:100%;height:100%"></img>
 		</div>
 		<div class="column">
-			<button class="w3-button w3-red"> Lisää koriin! </button>
+			<p id="tuotekuvaus" class="w3-hide-small">
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			</p>
+			<button class="w3-button w3-red" onclick="addC(this)"> Lisää ostoskärryyn! </button>
 		</div>
 	</div>
     </div>
@@ -212,11 +236,20 @@ body, html {
 <script>
 console.log("made by Elias Eskelinen")
 console.log("This is a school project, not an actual product")
+
+var dict = {
+  "nu1": "Boxi A",
+  "nu2": "Boxi B",
+  "nu3": "Boxi C",
+  "nu4": "Boxi D"
+  // etc.
+};
 //alert("Made for a school project. This is not a real product!");
 // Modal Image Gallery
 function onClick(element) {
   document.getElementById("img01").src = element.src;
   document.getElementById("img02").src = element.src;
+  document.getElementById("CID").id = element.id;
   document.getElementById("img01").style.filter = element.style.filter;
   document.getElementById("img02").style.filter = element.style.filter;
   document.getElementById("modal01").style.display = "block";
@@ -247,6 +280,11 @@ function toggleFunction() {
 //Hide
 function hideb() {
     document.getElementById("modal01").style.display = "none";
+    var cid = document.getElementsByClassName("CID");
+    var i = 0;
+    for (i = 0; i < cid.length; i++) {
+        cid[i].id = "CID";
+    }
 }
 // Used to toggle the menu on small screens when clicking on the menu button
 function toggleFunction() {
@@ -332,7 +370,9 @@ if(stuff.hasOwnProperty("p")){
   onClick(elem);
   console.log("Done.")
 }
-
+function isHidden(el) {
+    return (el.offsetParent === null)
+}
 //accordion effects
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -386,5 +426,40 @@ function resiz(){
 window.addEventListener('resize', function(event){
   resiz();
 });
+function addC(elem){
+  cart.push(document.getElementsByClassName("CID")[0].id);
+  alert(document.getElementById("caption").innerHTML + " lisättiin kärryysi!");
+  var icon = document.getElementById("car");
+  console.log("Icon: " + icon.innerHTML);
+  console.log("Icons should be: " + cart.length)
+  if(cart.length != 1){
+  	icon.innerHTML = cart.length + " boxia kärryssä";
+  }
+  else{
+  	icon.innerHTML = cart.length + " boxi kärryssä";
+  }
+  console.log(cart);
+}
+function showCart(){
+  var i2;
+  var out = "Kärryssäsi on:  \n";
+  for (i2 = 0; i2 < cart.length; i2++) {
+    console.log(cart[i2]);
+    if(cart[i2] === "nu1"){
+	out = out + "Boxi A \n";
+    }
+    if(cart[i2] === "nu2"){
+	out = out + "Boxi B \n";
+    }
+    if(cart[i2] === "nu3"){
+	out = out + "Boxi C \n";
+    }
+    if(cart[i2] === "nu4"){
+	out = out + "Boxi D \n";
+    }
+  }
+  alert(out);
+}
 resiz();
+var cart = [];
 </script>
