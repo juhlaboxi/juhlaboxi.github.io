@@ -23,4 +23,6 @@
   background-color: #4caf50;
   display: none;
   overflow: hidden;
+  text-align: left;
+  font-size: 85%;
 }  

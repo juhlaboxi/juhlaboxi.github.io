@@ -95,7 +95,7 @@ body, html {
     <a href="index.html#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
     <a href="index.html#Tilaa" class="w3-bar-item w3-button w3-hide-small w3-red w3-text-black"><i class="fa fa-th"></i> TILAA</a>
     <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> OTA YHTEYTTÄ</a>
-    <a class="w3-bar-item w3-button w3-right w3-hover-red" onclick="showCart();">
+    <a class="w3-bar-item w3-button w3-right w3-hover-red" onclick="showNewCart();">
       <i class="fa fa-shopping-cart"><p id="car">(0)</p></i>
     </a>
   </div>
@@ -149,19 +149,19 @@ body, html {
 
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
+      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu5">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
+      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu5">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
+      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu5">
     </div>
 
     <div class="w3-col m3">
-      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu1">
+      <img src="boxiA.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi A" id="nu5">
     </div>
     <!--<button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">TILAA NYT!</button>-->
   </div>
@@ -184,21 +184,21 @@ body, html {
 		</div>
 		<div class="column">
 			<h3 class=""> Sisältää </h3>
-			<ul class="w3-ul w3-green">
+			<ul class="w3-ul w3-black">
 			    <li >
-					<button class="accordion">Ruokatarvikkeita ▼</button>
+					<button class="accordion" id="ruoka_nimi">Ruokatarvikkeita ▼</button>
 					<div class="panel">
-  					<p>Lorem ipsum...</p>
+  					<p id="tarv_ruoka">Lorem ipsum...</p>
 					</div>
 			    </li>
 			    <li>
-					<button class="accordion">Kuusitarvikeet ▼</button>
+					<button class="accordion" id="muut_nimi">Kuusitarvikeet ▼</button>
 					<div class="panel">
-  					<p>Lorem ipsum...</p>
+  					<p id="tarv_muut">Lorem ipsum...</p>
 					</div>
 			    </li>
 			    <li>
-					<button class="accordion">??? ▼</button>
+					<button class="accordion" id="extra_nimi">??? ▼</button>
 					<div class="panel">
   					<p>Lorem ipsum...</p>
 					</div>
@@ -215,6 +215,50 @@ body, html {
 			tuotekuvaus tuotekuvaus tuotekuvaus
 			</p>
 			<button class="w3-button w3-red" onclick="addC(this)"> Lisää ostoskärryyn! </button>
+		</div>
+	</div>
+    </div>
+  </div>
+</div>
+<!-- Modal for full size images on click-->
+<div id="modal02" class="w3-modal w3-black" >
+  <span class="w3-button w3-large w3-black w3-display-topright w3" title="Close Modal Image" onclick="hideCart();"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-0">
+    <div style="background:black;width: 90%; height:100%; border: dotted 2px #4caf50;">
+	<h1 class="w3-large w3-text-white">Ostoskärrysi</h1>
+	<div class="row">
+		<div class="w3-hide-medium w3-hide-large column">
+    			<p id="tuotekuvaus_lyhyt">
+			lyhyt tuotekuvaus lyhyt tuotekuvaus
+			</p>
+		</div>
+		<div class="column">
+			<h3 class=""> Sisältää </h3>
+			<ul class="w3-ul w3-black">
+			    <li >
+					<div class="w3-green"> tuote <span class="w3-button w3-red w3" title="Close Modal Image" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
+			    </li>
+			    <li>
+					<button class="accordion" id="muut_nimi">Kuusitarvikeet ▼</button>
+					<div class="panel">
+  					<p id="tarv_muut">Lorem ipsum...</p>
+					</div>
+			    </li>
+			    <li>
+					<button class="accordion" id="extra_nimi">??? ▼</button>
+					<div class="panel">
+  					<p>Lorem ipsum...</p>
+					</div>
+			    </li>
+			</ul>
+		</div>
+		<div class="column">
+			<p id="tuotekuvaus" class="w3-hide-small">
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			</p>
+			<button class="w3-button w3-red" onclick="shareCart()"> Siirry maksamaan </button>
 		</div>
 	</div>
     </div>
@@ -242,15 +286,47 @@ console.log("made by Elias Eskelinen")
 console.log("This is a school project, not an actual product")
 
 var dict = {
-  "nu1": "Boxi A",
+  "nu1": "Kokoa omasi!",
   "nu2": "Boxi B",
   "nu3": "Boxi C",
   "nu4": "Boxi D"
   // etc.
 };
+var sisallot_ruoka = {
+  "nu1": "+",
+  "nu2": "jouluruokaa",
+  "nu3": "kouluruokaa",
+  "nu4": "luolaruokaa"
+  // etc.
+};
+var sisallot_muut = {
+  "nu1": "+",
+  "nu2": "kuusitarvikkeita",
+  "nu3": "mass murder in 3 easy steps",
+  "nu4": "watch and learn"
+  // etc.
+};
+var sisallot_ruoka_nimi = {
+  "nu1": "Ruokaa ▼",
+  "nu2": "Ruokaa ▼",
+  "nu3": "Ruokaa ▼",
+  "nu4": "Ruokaa ▼"
+  // etc.
+};
+var sisallot_muut_nimi = {
+  "nu1": "joulutarvikkeita ▼",
+  "nu2": "kuusitarvikkeita ▼",
+  "nu3": "joulutarvikkeita ▼",
+  "nu4": "joulutarvikkeita ▼"
+  // etc.
+};
+var p = 0;
 //alert("Made for a school project. This is not a real product!");
 // Modal Image Gallery
 function onClick(element) {
+  if(element == null){
+    return null;
+  }
   document.getElementById("img01").src = element.src;
   document.getElementById("img02").src = element.src;
   document.getElementById("CID").id = element.id;
@@ -259,8 +335,14 @@ function onClick(element) {
   document.getElementById("modal01").style.display = "block";
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
+  document.getElementById("tarv_ruoka").innerHTML = sisallot_ruoka[element.id];
+  document.getElementById("tarv_muut").innerHTML = sisallot_muut[element.id];
+  document.getElementById("ruoka_nimi").innerHTML = sisallot_ruoka_nimi[element.id];
+  document.getElementById("muut_nimi").innerHTML = sisallot_muut_nimi[element.id];
 }
-
+function showNewCart(){
+  document.getElementById("modal02").style.display = "block";
+}
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
 function myFunction() {
@@ -289,6 +371,10 @@ function hideb() {
     for (i = 0; i < cid.length; i++) {
         cid[i].id = "CID";
     }
+}
+//Hide
+function hideCart() {
+    document.getElementById("modal02").style.display = "none";
 }
 // Used to toggle the menu on small screens when clicking on the menu button
 function toggleFunction() {
@@ -368,6 +454,7 @@ console.log(stuff);
 if(stuff.hasOwnProperty("p")){
   console.log("found a product redirect parameter!");
   var nu = stuff.p;
+  p = nu;
   console.log("property: " + nu)
   var elem = document.getElementById("nu" + nu);
   console.log("opening appropriate product...");
@@ -449,18 +536,8 @@ function showCart(){
   var out = "Kärryssäsi on:  \n";
   for (i2 = 0; i2 < cart.length; i2++) {
     console.log(cart[i2]);
-    if(cart[i2] === "nu1"){
-	out = out + "Boxi A \n";
-    }
-    if(cart[i2] === "nu2"){
-	out = out + "Boxi B \n";
-    }
-    if(cart[i2] === "nu3"){
-	out = out + "Boxi C \n";
-    }
-    if(cart[i2] === "nu4"){
-	out = out + "Boxi D \n";
-    }
+    out = out + dict[cart[i2]] + "\n";
+    console.log(dict[cart[i2]]);
   }
   alert(out);
 }
