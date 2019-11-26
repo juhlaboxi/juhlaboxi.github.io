@@ -234,21 +234,9 @@ body, html {
 		</div>
 		<div class="column">
 			<h3 class=""> Sisältää </h3>
-			<ul class="w3-ul w3-black">
+			<ul class="w3-ul w3-black" id="cartL">
 			    <li >
-					<div class="w3-green"> tuote <span class="w3-button w3-red w3" title="Close Modal Image" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
-			    </li>
-			    <li>
-					<button class="accordion" id="muut_nimi">Kuusitarvikeet ▼</button>
-					<div class="panel">
-  					<p id="tarv_muut">Lorem ipsum...</p>
-					</div>
-			    </li>
-			    <li>
-					<button class="accordion" id="extra_nimi">??? ▼</button>
-					<div class="panel">
-  					<p>Lorem ipsum...</p>
-					</div>
+					<div>tuote <span class="w3-button w3-red w3" title="Close Modal Image" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
 			    </li>
 			</ul>
 		</div>
@@ -342,6 +330,19 @@ function onClick(element) {
 }
 function showNewCart(){
   document.getElementById("modal02").style.display = "block";
+  //Remove cart (old)contents
+  const myNode = document.getElementById("cartL");
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+  }
+  //Append new contents
+  var i2 = 0;
+  for (i2 = 0; i2 < cart.length; i2++) {
+    var node = document.createElement("LI");                 // Create a <li> node
+    var textnode = document.createTextNode(dict[cart[i2]]);         // Create a text node
+    node.appendChild(textnode);                              // Append the text to <li>
+    myNode.appendChild(node);
+  }
 }
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
