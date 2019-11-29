@@ -256,7 +256,7 @@ body, html {
 		</div>
 		<div class="column">
 			<p> jaa ostoskärrysi kätevästi linkillä: </p>
-			<div style="border:1px solid red;">Linkki</div>
+			<div style="border:1px solid red;" id="clink">Linkki</div>
 		</div>
 	</div>
     </div>
@@ -283,6 +283,7 @@ body, html {
 console.log("made by Elias Eskelinen")
 console.log("This is a school project, not an actual product")
 
+var cart = [];
 //alert("sivu yhä työn alla.");
 var dict = {
   "nu1": "Kokoa omasi!",
@@ -344,12 +345,31 @@ function showNewCart(){
   updateCUI();
 }
 function parseCartUrl(stri){
-	
+  console.log("Parsing the cart url...");
+  var i2 = 0;
+  var curr = "";
+  for (i2 = 0; i2 < stri.length; i2++) {
+	console.log(stri[i2]);
+	if(stri[i2] === ","){
+		cart.push(curr);
+		curr = "";
+	}
+	else{
+		curr = curr + stri[i2];
+	}
+  }
+  if(!(curr === "")){
+	cart.push(curr);
+  }
+  console.log("Updating cart UI");
+  console.log("Done parsing the cart url!");
 }
 function updateCUI(){
   cleanCart();
   //Remove cart (old)contents
   const myNode = document.getElementById("cartL");
+  const link = document.getElementById("clink");
+  link.innerHTML = buildCart();
   while (myNode.firstChild) {
     myNode.removeChild(myNode.firstChild);
   }
@@ -398,6 +418,20 @@ function cleanCart(){
     return el != null;
   });
   console.log("Kärry siistitty!");
+}
+function buildCart(){
+	console.log("Building custom cart url");
+	console.log("------------------------");
+	console.log("Cart: " + cart);
+	var url = "juhlaboxi.github.io?c=";
+	var i2 = 0;
+	for (i2 = 0; i2 < cart.length; i2++) {
+  		
+  	}
+	url = url + "" + cart + "";
+	console.log("URL: " + url);
+	console.log("------------------------");
+	return(url);
 }
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
@@ -517,6 +551,11 @@ if(stuff.hasOwnProperty("p")){
   onClick(elem);
   console.log("Done.")
 }
+if(stuff.hasOwnProperty("c")){
+	console.log("Found a cart in the url: " + stuff.c);
+	parseCartUrl(stuff.c);
+	showNewCart();
+}
 function isHidden(el) {
     return (el.offsetParent === null)
 }
@@ -590,6 +629,5 @@ function showCart(){
   alert(out);
 }
 resiz();
-var cart = [];
 updateCUI();
 </script>
