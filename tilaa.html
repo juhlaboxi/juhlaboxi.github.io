@@ -232,7 +232,7 @@ body, html {
   <div class="w3-modal-content w3-animate-bottom w3-center w3-transparent w3-padding-0">
     <div style="background:black;width: 90%; height:100%; border: dotted 2px #4caf50;">
 	<h1 class="w3-xxlarge w3-text-white">Ostoskärrysi</h1>
-	<div class="row">
+	<div class="row" style="overflow: hidden;">
 		<div class="w3-hide-medium w3-hide-large column">
     			<p id="tuotekuvaus_lyhyt">
 			lyhyt tuotekuvaus lyhyt tuotekuvaus
@@ -255,8 +255,12 @@ body, html {
 			<button class="w3-button w3-green" onclick="shareCart()"> Siirry maksamaan </button>
 		</div>
 		<div class="column">
-			<p> jaa ostoskärrysi kätevästi linkillä: </p>
-			<div style="border:1px solid red;" id="clink">Linkki</div>
+			<p>Jaa ostoskärrysi kätevästi linkillä: </p>
+			<div style="overflow: auto; white-space: nowrap;">
+<button class="w3-button w3-green" style="display:inline;" onclick="copyCart();"> <i class="fa fa-clipboard"  style="display:inline;" aria-hidden="true"></i></button>
+
+<div style="display:inline; overflow: auto; border:1px solid red; width:100%;"><p id="clink" style="width:100%; display:inline;";>Linkki</p></div>
+			</div>
 		</div>
 	</div>
     </div>
@@ -432,6 +436,17 @@ function buildCart(){
 	console.log("URL: " + url);
 	console.log("------------------------");
 	return(url);
+}
+function copyCart(){
+	var copyText = document.getElementById("clink");
+	var inp = document.createElement("INPUT");
+	copyText.parentNode.appendChild(inp);
+	inp.value = copyText.innerHTML;
+  	inp.select();
+  	inp.setSelectionRange(0, 99999);
+  	document.execCommand("copy");
+	alert("Linkki kopioitu leikepöydälle!");
+	copyText.parentNode.removeChild(inp);
 }
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
