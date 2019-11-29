@@ -33,7 +33,7 @@ body, html {
 /* Second image (Portfolio) */
 .bgimg-2 {
   background-image: url("xmas.jpeg");
-  min-height: 85%;
+  min-height: 100%;
 }
 
 /* Third image (Contact) */
@@ -95,8 +95,8 @@ body, html {
     <a href="index.html#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
     <a href="index.html#Tilaa" class="w3-bar-item w3-button w3-hide-small w3-red w3-text-black"><i class="fa fa-th"></i> TILAA</a>
     <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> OTA YHTEYTTÄ</a>
-    <a class="w3-bar-item w3-button w3-right w3-hover-red" onclick="showNewCart();">
-      <i class="fa fa-shopping-cart"><p id="car">(0)</p></i>
+    <a class="w3-bar-item w3-button w3-right w3-hover-black w3-red w3-text-black w3-hover-text-red" style="font-size: 115%;" onclick="showNewCart();">
+      <p id="car" style="display:inline;">(0)</p><i class="fa fa-shopping-cart" style="display:inline; float:right;"></i>
     </a>
   </div>
 
@@ -108,31 +108,34 @@ body, html {
   </div>
 </div>
 
-<br \>
-<br \>
-<br \>
-
 <body>
 <div class="bgimg-2 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle">
     <span class="w3-xxlarge w3-text-white w3-wide w3-green">TILAA</span>
   </div>
   <div class="w3-display-bottommiddle w3-center">
-    <span class="w3-large w3-text-white w3-black w3-hide-small">Katso Vaihdoehdot</span>
+    <span class="w3-large w3-text-white w3-black w3-hide-small">Katso Vaihdoehdot / Kokoa omasi</span>
     <span class="w3-xlarge w3-wide w3-text-white"><br \>▼</span>
   </div>
 </div>
 <!-- Container (Portfolio Section) -->
 <div class="w3-content w3-container w3-padding-64" id="Tilaa">
 <div class="w3-hide-small" id="isSmall"> </div>
+
+<h3 class="w3-center">Kokoa omasi</h3>
+<div class="w3-row-padding w3-center">
+	<div class="w3-col m3">
+      		<img src="oma.png" style="width:100%;filter:hue-rotate(0deg);" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="Kokoa Omasi!" id="nu1">
+	</div>
+</div>
+
+<br \>
 <h3 class="w3-center">Tilausvalmiit vaihtoehdot</h3>
   <p class="w3-center"><em>Tässä ovat tilausvaihtoehtomme.<br> Klikkaa kuvasta saadaksesi tietää lisää <span class="w3-hide-large"><br \></span>tai lisätäksesi sen ostoskärryysi!</em></p><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <img src="oma.png" style="width:100%;filter:hue-rotate(0deg);" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="Kokoa Omasi!" id="nu1">
-    </div>
+    
 
     <div class="w3-col m3">
       <img src="boxiA.png" style="width:100%;filter:hue-rotate(45deg);" onclick="onClick(this)" class="w3-hover-opacity wowimg" alt="boxi B" id="nu2">
@@ -169,7 +172,7 @@ body, html {
 <!-- Modal for full size images on click-->
 <div id="modal01" class="w3-modal w3-black" >
   <span class="w3-button w3-large w3-black w3-display-topright w3" title="Close Modal Image" onclick="hideb();"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-0">
+  <div class="w3-modal-content w3-animate-top w3-center w3-transparent w3-padding-0">
     <div style="background:black;width: 100%; height:100%; border: dotted 2px #4caf50;">
 	<h1 id="caption" class="w3-large w3-text-white"></h1>
 	<p class="CID" id="CID"></p>
@@ -220,13 +223,13 @@ body, html {
     </div>
   </div>
 </div>
-<hidden>
-  <span class="w3-button w3-red w3 w3-tiny" title="Close Modal Image" onclick="removeProd();" id="dele_src" align="right"><i class="fa fa-remove"></i></span>
+<hidden hidden>
+  <span class="w3-button w3-red w3 w3-tiny" title="Poista tuote kärrystä" onclick="removeProd(this);" id="dele_src" align="right"><i class="fa fa-remove"></i></span>
 </hidden>
 <!-- Modal for full size images on click-->
 <div id="modal02" class="w3-modal w3-black" >
   <span class="w3-button w3-large w3-black w3-display-topright w3" title="Close Modal Image" onclick="hideCart();"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-0">
+  <div class="w3-modal-content w3-animate-bottom w3-center w3-transparent w3-padding-0">
     <div style="background:black;width: 90%; height:100%; border: dotted 2px #4caf50;">
 	<h1 class="w3-xxlarge w3-text-white">Ostoskärrysi</h1>
 	<div class="row">
@@ -250,6 +253,10 @@ body, html {
 			tuotekuvaus tuotekuvaus tuotekuvaus
 			</p>
 			<button class="w3-button w3-green" onclick="shareCart()"> Siirry maksamaan </button>
+		</div>
+		<div class="column">
+			<p> jaa ostoskärrysi kätevästi linkillä: </p>
+			<div style="border:1px solid red;">Linkki</div>
 		</div>
 	</div>
     </div>
@@ -276,6 +283,7 @@ body, html {
 console.log("made by Elias Eskelinen")
 console.log("This is a school project, not an actual product")
 
+//alert("sivu yhä työn alla.");
 var dict = {
   "nu1": "Kokoa omasi!",
   "nu2": "Boxi B",
@@ -333,6 +341,13 @@ function onClick(element) {
 }
 function showNewCart(){
   document.getElementById("modal02").style.display = "block";
+  updateCUI();
+}
+function parseCartUrl(stri){
+	
+}
+function updateCUI(){
+  cleanCart();
   //Remove cart (old)contents
   const myNode = document.getElementById("cartL");
   while (myNode.firstChild) {
@@ -345,6 +360,7 @@ function showNewCart(){
     var node = document.createElement("LI");                 // Create a <li> node
     var textnode = document.createTextNode(dict[cart[i2]] + "   ");         // Create a text node
     var dele = document.getElementById("dele_src").cloneNode(true);
+    dele.tod = i2;
     node.appendChild(textnode);                              // Append the text to <li>
     cont.appendChild(node);
     node.appendChild(dele);
@@ -355,6 +371,33 @@ function showNewCart(){
   for (i2 = 0; i2 < myNode.children.length; i2++) {
   
   }
+  var icon = document.getElementById("car");
+  console.log("Icon: " + icon.innerHTML);
+  console.log("Icons should be: " + cart.length)
+  if(cart.length != 1){
+  	icon.innerHTML = cart.length + " boxia";
+  }
+  else{
+  	icon.innerHTML = cart.length + " boxi";
+  }
+}
+//rm
+function removeProd(elem){
+  console.log("REMOVING PRODUCT: " + elem);
+  console.log(elem.tod + "");
+  console.log(cart);
+  console.log("indexed as: " + cart[elem.tod]);
+  delete cart[elem.tod];
+  console.log(cart);
+  updateCUI();
+}
+function cleanCart(){
+  console.log("Siistitään kärryä...");
+  Object.keys(cart).forEach(key => cart[key] === undefined && delete obj[key]);
+  cart = cart.filter(function (el) {
+    return el != null;
+  });
+  console.log("Kärry siistitty!");
 }
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
@@ -533,15 +576,7 @@ window.addEventListener('resize', function(event){
 function addC(elem){
   cart.push(document.getElementsByClassName("CID")[0].id);
   alert(document.getElementById("caption").innerHTML + " lisättiin kärryysi!");
-  var icon = document.getElementById("car");
-  console.log("Icon: " + icon.innerHTML);
-  console.log("Icons should be: " + cart.length)
-  if(cart.length != 1){
-  	icon.innerHTML = cart.length + " boxia kärryssä";
-  }
-  else{
-  	icon.innerHTML = cart.length + " boxi kärryssä";
-  }
+  updateCUI();
   console.log(cart);
 }
 function showCart(){
@@ -556,4 +591,5 @@ function showCart(){
 }
 resiz();
 var cart = [];
+updateCUI();
 </script>
