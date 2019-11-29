@@ -1,4 +1,4 @@
 # juhlaboxi.github.io
 yh kouluprojekti
 
-[linkki](juhlaboxi.github.io)
+[linkki](https://juhlaboxi.github.io)
