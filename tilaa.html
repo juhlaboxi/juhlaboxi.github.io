@@ -605,9 +605,7 @@ function getAllUrlParams(url) {
 }
 var stuff = getAllUrlParams(window.location + '');
 console.log(stuff);
-if(document.cookie){
-	readCookie();
-}
+
 if(stuff.hasOwnProperty("p")){
   console.log("found a product redirect parameter!");
   var nu = stuff.p;
@@ -622,6 +620,9 @@ if(stuff.hasOwnProperty("c")){
 	console.log("Found a cart in the url: " + stuff.c);
 	parseCartUrl(stuff.c);
 	showNewCart();
+}
+if(!stuff.hasOwnProperty("c")){
+	readCookie();
 }
 
 function isHidden(el) {
