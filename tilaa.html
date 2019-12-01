@@ -93,9 +93,9 @@ body, html {
     </a>
     <a href="index.html#home" class="w3-bar-item w3-button">juhlaboxi</a>
     <a href="index.html#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="index.html#Tilaa" class="w3-bar-item w3-button w3-hide-small w3-red w3-text-black w3-hover-text-red w3-hover-black"><i class="fa fa-th"></i> TILAA</a>
+    <a href="index.html#Tilaa" class="w3-bar-item w3-button w3-red w3-text-black w3-hover-text-red w3-hover-black"><i class="fa fa-th"></i> TILAA</a>
     <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> OTA YHTEYTTÄ</a>
-    <a class="w3-bar-item w3-button w3-right w3-hover-black w3-red w3-text-black w3-hover-text-red" style="font-size: 115%;" onclick="showNewCart();">
+    <a class="w3-bar-item w3-button w3-right w3-hover-black w3-green w3-text-black w3-hover-text-green" style="font-size: 115%;" onclick="showNewCart();">
       <p id="car" style="display:inline;">(0)</p><i class="fa fa-shopping-cart" style="display:inline; float:right;"></i>
     </a>
   </div>
@@ -255,11 +255,11 @@ body, html {
 			<button class="w3-button w3-green" onclick="shareCart()"> Siirry maksamaan </button>
 		</div>
 		<div class="column">
-			<p>Jaa ostoskärrysi kätevästi linkillä: </p>
-			<div style="overflow: auto; white-space: nowrap;">
-<button class="w3-button w3-green" style="display:inline;" onclick="copyCart();"> <i class="fa fa-clipboard"  style="display:inline;" aria-hidden="true"></i></button>
+			<p>Jaa (tai tallenna) ostoskärrysi kätevästi linkillä: </p>
+			<div style="overflow: auto; white-space: nowrap;  padding: 0px 0px 0px 0px; width:100%;" class="w3-white">
 
-<div style="display:inline; overflow: auto; width:100%;"><p id="clink" style="width:100%; display:inline;";>Linkki</p></div>
+<div style="display:inline; overflow: auto; width:100%;" ><p id="clink" style="width:100%; display:inline;";>Linkki</p></div>
+			<button class="w3-button w3-green" style="display:inline;" onclick="copyCart();"> <i class="fa fa-clipboard"  style="display:inline;" aria-hidden="true"></i></button>
 			</div>
 		</div>
 	</div>
@@ -269,8 +269,10 @@ body, html {
 </body>
 
 <!-- Footer -->
+<hr \>
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <br \><br \><a href="LICENSE">Tämä verkkosivu on lisensöity "open source" MIT-lisenssillä</a><br \>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
@@ -279,7 +281,7 @@ body, html {
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  <p>Lähdekoodi löytyy <a href="https://github.com/festivebox/festivebox.github.io" title="github link" target="_blank">githubista</a>!</p>
+  <p>Tämän verkkosivun lähdekoodi löytyy <a href="https://github.com/festivebox/festivebox.github.io" title="github link" target="_blank">githubista</a>!</p>
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
  
@@ -349,7 +351,7 @@ function showNewCart(){
   updateCUI();
 }
 function parseCartUrl(stri){
-  console.log("Parsing the cart url...");
+  console.log("Parsing the cart...");
   var i2 = 0;
   var curr = "";
   for (i2 = 0; i2 < stri.length; i2++) {
@@ -368,12 +370,55 @@ function parseCartUrl(stri){
   console.log("Updating cart UI");
   console.log("Done parsing the cart url!");
 }
+function makeCookie(){
+	console.log("Making a cookie...");
+	console.log("------------------");
+	var c = "";
+	var exp = "expires=Thu, 18 Dec 2022 12:00:00 UTC";
+	var i2 = 0;
+  	for (i2 = 0; i2 < cart.length; i2++) {
+		c = c + cart[i2] + ",";
+	}
+	document.cookie = "cart="+c+";"+exp;
+	console.log("DONE: " + c);
+	console.log("------------------");
+}
+function readCookie(){
+	console.log("Reading cookies...");
+	console.log("------------------");
+	var x = document.cookie;
+	console.log("DONE: " + x)
+	console.log("Parsing cookies...");
+	console.log("Cart cookie: " + getCookie("cart"))
+	parseCartUrl(getCookie("cart"));
+	console.log("DONE: " + cart)
+	console.log("------------------");
+}
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 function updateCUI(){
   cleanCart();
   //Remove cart (old)contents
   const myNode = document.getElementById("cartL");
   const link = document.getElementById("clink");
   link.innerHTML = buildCart();
+  makeCookie();
+  if (window.history.pushState) {
+    //history.pushState({}, null, link.innerHTML);
+  }
   while (myNode.firstChild) {
     myNode.removeChild(myNode.firstChild);
   }
@@ -428,6 +473,9 @@ function buildCart(){
 	console.log("------------------------");
 	console.log("Cart: " + cart);
 	var url = "juhlaboxi.github.io/tilaa?c=";
+	if(cart.length == 0){
+		url = "juhlaboxi.github.io/tilaa";
+	}
 	var i2 = 0;
 	for (i2 = 0; i2 < cart.length; i2++) {
   		
@@ -556,6 +604,9 @@ function getAllUrlParams(url) {
 }
 var stuff = getAllUrlParams(window.location + '');
 console.log(stuff);
+if(document.cookie){
+	readCookie();
+}
 if(stuff.hasOwnProperty("p")){
   console.log("found a product redirect parameter!");
   var nu = stuff.p;
@@ -571,6 +622,7 @@ if(stuff.hasOwnProperty("c")){
 	parseCartUrl(stuff.c);
 	showNewCart();
 }
+
 function isHidden(el) {
     return (el.offsetParent === null)
 }
