@@ -121,6 +121,8 @@ body, html {
 <!-- Container (Portfolio Section) -->
 <div class="w3-content w3-container w3-padding-64" id="Tilaa">
 <div class="w3-hide-small" id="isSmall"> </div>
+<div class="w3-hide-medium" id="isMedium"> </div>
+<div class="w3-hide-large" id="isLarge"> </div>
 
 <h3 class="w3-center">Kokoa omasi</h3>
 <div class="w3-row-padding w3-center">
@@ -131,7 +133,7 @@ body, html {
 
 <br \>
 <h3 class="w3-center">Tilausvalmiit vaihtoehdot</h3>
-  <p class="w3-center"><em>Tässä ovat tilausvaihtoehtomme.<br> Klikkaa kuvasta saadaksesi tietää lisää <span class="w3-hide-large"><br \></span>tai lisätäksesi sen ostoskärryysi!</em></p><br>
+  <p class="w3-center"><em>Tässä ovat tilausvaihtoehtomme.<br> Klikkaa kuvasta saadaksesi tietää lisää <span class="w3-hide-large w3-hide-medium"><br \></span>tai lisätäksesi sen ostoskärryysi!</em></p><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
@@ -659,13 +661,28 @@ for (i2 = 0; i2 < acc2.length; i2++) {
   newText.appendChild(node);
   acc2[i2].parentNode.insertBefore( newText, acc2[i2].nextSibling );
 } 
+var scal2 = 100;
 function resiz(){
   var iss = document.getElementById("isSmall");
+  var ism = document.getElementById("isMedium");
+  var isl = document.getElementById("isLarge");
   var acc2 = document.getElementsByClassName("wowimg");
   var i2;
   var scal = 100;
-  if(isHidden(iss)){
-    console.log("hidden");
+  
+  if(isHidden(isl)){
+    console.log("hidden: large");
+    scal = 75;
+	yeet
+    
+  }
+  else if(isHidden(ism)){
+    console.log("hidden: medium");
+    scal = 75;
+    
+  }
+  else if(isHidden(iss)){
+    console.log("hidden: small");
     scal = 50;
     
   }
