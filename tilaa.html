@@ -115,7 +115,7 @@ body, html {
   </div>
   <div class="w3-display-bottommiddle w3-center">
     <span class="w3-large w3-text-white w3-black w3-hide-small">Katso Vaihdoehdot / Kokoa omasi</span>
-    <span class="w3-xlarge w3-wide w3-text-white"><br \>▼</span>
+    <span class="w3-xxlarge w3-wide w3-text-red"><br \>▼</span>
   </div>
 </div>
 <!-- Container (Portfolio Section) -->
@@ -244,10 +244,11 @@ body, html {
 			<h3 class=""> Sisältää </h3>
 			<ul class="w3-ul w3-black" id="cartL" style="border: 1px solid white;">
 			    <li >
-					<div>tuote <span class="w3-button w3-red w3" title="Close Modal Image" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
+					<div>tuote <span class="w3-button w3-red w3" title="Poista tuote" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
 			    </li>
 			</ul>
 		</div>
+		<br \>
 		<div class="column">
 			<p id="tuotekuvaus" class="w3-hide-small">
 			tuotekuvaus tuotekuvaus tuotekuvaus
@@ -293,6 +294,8 @@ console.log("made by Elias Eskelinen")
 console.log("This is a school project, not an actual product")
 
 var cart = [];
+
+resiz();
 //alert("sivu yhä työn alla.");
 var dict = {
   "nu1": "Kokoa omasi!",
@@ -337,7 +340,11 @@ function onClick(element) {
     return null;
   }
   document.getElementById("img01").src = element.src;
+  document.getElementById("img01").style.width = scal2 + "%";
+  document.getElementById("img01").style.height = scal2 + "%";
   document.getElementById("img02").src = element.src;
+  document.getElementById("img02").style.width = scal2 + "%";
+  document.getElementById("img02").style.height = scal2 + "%";
   document.getElementById("CID").id = element.id;
   document.getElementById("img01").style.filter = element.style.filter;
   document.getElementById("img02").style.filter = element.style.filter;
@@ -669,11 +676,12 @@ function resiz(){
   var acc2 = document.getElementsByClassName("wowimg");
   var i2;
   var scal = 100;
+  scal2 = 100;
   
   if(isHidden(isl)){
     console.log("hidden: large");
-    scal = 75;
-	yeet
+    scal = 100;
+	scal2 = 50;
     
   }
   else if(isHidden(ism)){
@@ -714,6 +722,5 @@ function showCart(){
   }
   alert(out);
 }
-resiz();
 updateCUI();
 </script>
