@@ -268,6 +268,46 @@ body, html {
     </div>
   </div>
 </div>
+<!-- Item selector-->
+<div id="modal03" class="w3-modal w3-black" >
+  <span class="w3-button w3-large w3-black w3-display-topright w3" title="Close item picker" onclick="hide3();"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-bottom w3-center w3-transparent w3-padding-0">
+    <div style="background:black;width: 90%; height:100%; border: dotted 2px #4caf50;">
+	<h1 class="w3-xxlarge w3-text-white">Lisää tuote boxiin</h1>
+	<div class="row" style="overflow: hidden;">
+		<div class="w3-hide-medium w3-hide-large column">
+    			<p id="tuotekuvaus_lyhyt">
+			lyhyt tuotekuvaus lyhyt tuotekuvaus
+			</p>
+		</div>
+		<div class="column">
+			<h3 class=""> Sisältää </h3>
+			<ul class="w3-ul w3-black" id="cartL" style="border: 1px solid white;">
+			    <li >
+					<div>tuote <span class="w3-button w3-red w3" title="Close Modal Image" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
+			    </li>
+			</ul>
+		</div>
+		<div class="column">
+			<p id="tuotekuvaus" class="w3-hide-small">
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			tuotekuvaus tuotekuvaus tuotekuvaus
+			</p>
+			<button class="w3-button w3-green" onclick="shareCart()"> Siirry maksamaan </button>
+		</div>
+		<div class="column">
+			<p>Jaa (tai tallenna) ostoskärrysi kätevästi linkillä: </p>
+			<div style="overflow: auto; white-space: nowrap;  padding: 0px 0px 0px 0px; width:100%;" class="w3-white">
+
+<div style="display:inline; overflow: auto; width:100%;" ><p id="clink" style="width:100%; display:inline;";>Linkki</p></div>
+			<button class="w3-button w3-green" style="display:inline;" onclick="copyCart();"> <i class="fa fa-clipboard"  style="display:inline;" aria-hidden="true"></i></button>
+			</div>
+		</div>
+	</div>
+    </div>
+  </div>
+</div>
 </body>
 
 <!-- Footer -->
@@ -302,7 +342,7 @@ var dict = {
   // etc.
 };
 var sisallot_ruoka = {
-  "nu1": "+",
+  "nu1": "<button class='w3-button w3-yellow w3-text-black' onclick='show3()'>+</button>",
   "nu2": "jouluruokaa",
   "nu3": "kouluruokaa",
   "nu4": "luolaruokaa"
@@ -323,7 +363,7 @@ var sisallot_ruoka_nimi = {
   // etc.
 };
 var sisallot_muut_nimi = {
-  "nu1": "joulutarvikkeita ▼",
+  "nu1": "tarvikkeita ▼",
   "nu2": "kuusitarvikkeita ▼",
   "nu3": "joulutarvikkeita ▼",
   "nu4": "joulutarvikkeita ▼"
@@ -352,6 +392,9 @@ function onClick(element) {
 function showNewCart(){
   document.getElementById("modal02").style.display = "block";
   updateCUI();
+}
+function show3(){
+  document.getElementById("modal03").style.display = "block";
 }
 function parseCartUrl(stri){
   console.log("Parsing the cart...");
@@ -531,6 +574,10 @@ function hideb() {
 //Hide
 function hideCart() {
     document.getElementById("modal02").style.display = "none";
+}
+//Hide
+function hide3() {
+    document.getElementById("modal03").style.display = "none";
 }
 // Used to toggle the menu on small screens when clicking on the menu button
 function toggleFunction() {
