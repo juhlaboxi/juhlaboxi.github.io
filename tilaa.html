@@ -115,7 +115,7 @@ body, html {
   </div>
   <div class="w3-display-bottommiddle w3-center">
     <span class="w3-large w3-text-white w3-black w3-hide-small">Katso Vaihdoehdot / Kokoa omasi</span>
-    <span class="w3-xxlarge w3-wide w3-text-red"><br \>▼</span>
+    <span class="w3-xlarge w3-wide w3-text-white"><br \>▼</span>
   </div>
 </div>
 <!-- Container (Portfolio Section) -->
@@ -136,7 +136,7 @@ body, html {
   <p class="w3-center"><em>Tässä ovat tilausvaihtoehtomme.<br> Klikkaa kuvasta saadaksesi tietää lisää <span class="w3-hide-large w3-hide-medium"><br \></span>tai lisätäksesi sen ostoskärryysi!</em></p><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-  <div class="w3-row-padding w3-center">
+  <div class="w3-row-padding w3-center" id="wowgrid">
     
 
     <div class="w3-col m3">
@@ -244,11 +244,10 @@ body, html {
 			<h3 class=""> Sisältää </h3>
 			<ul class="w3-ul w3-black" id="cartL" style="border: 1px solid white;">
 			    <li >
-					<div>tuote <span class="w3-button w3-red w3" title="Poista tuote" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
+					<div>tuote <span class="w3-button w3-red w3" title="Close Modal Image" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
 			    </li>
 			</ul>
 		</div>
-		<br \>
 		<div class="column">
 			<p id="tuotekuvaus" class="w3-hide-small">
 			tuotekuvaus tuotekuvaus tuotekuvaus
@@ -274,13 +273,9 @@ body, html {
   <span class="w3-button w3-large w3-black w3-display-topright w3" title="Close item picker" onclick="hide3();"><i class="fa fa-remove"></i></span>
   <div class="w3-modal-content w3-animate-bottom w3-center w3-transparent w3-padding-0">
     <div style="background:black;width: 90%; height:100%; border: dotted 2px #4caf50;">
-	<h1 class="w3-xxlarge w3-text-white">Lisää tuote boxiin</h1>
+	<h1 class="w3-xxlarge w3-text-white">Lisää tuotteita boxiin</h1>
+	<input type="text" class="w3-bar-item w3-input w3-center w3-text-center" placeholder="Hae tuotetta nimellä..." style="width:100%; background-image:linear-gradient(to right, black, darkorange); color:white;" id="search"></input>
 	<div class="row" style="overflow: hidden;">
-		<div class="w3-hide-medium w3-hide-large column">
-    			<p id="tuotekuvaus_lyhyt">
-			lyhyt tuotekuvaus lyhyt tuotekuvaus
-			</p>
-		</div>
 		<div class="column">
 			<h3 class=""> Sisältää </h3>
 			<ul class="w3-ul w3-black" id="cartL" style="border: 1px solid white;">
@@ -290,12 +285,20 @@ body, html {
 			</ul>
 		</div>
 		<div class="column">
-			<p id="tuotekuvaus" class="w3-hide-small">
-			tuotekuvaus tuotekuvaus tuotekuvaus
-			tuotekuvaus tuotekuvaus tuotekuvaus
-			tuotekuvaus tuotekuvaus tuotekuvaus
-			</p>
-			<button class="w3-button w3-green" onclick="shareCart()"> Siirry maksamaan </button>
+			<p id="searchV"></p>
+			<div id="searchgrid">
+				<ul id="myUL">
+				  <li><a href="#">Adele</a></li>
+				  <li><a href="#">Agnes</a></li>
+
+				  <li><a href="#">Billy</a></li>
+				  <li><a href="#">Bob</a></li>
+
+				  <li><a href="#">Calvin</a></li>
+				  <li><a href="#">Christina</a></li>
+				  <li><a href="#">Cindy</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class="column">
 			<p>Jaa (tai tallenna) ostoskärrysi kätevästi linkillä: </p>
@@ -334,14 +337,20 @@ console.log("made by Elias Eskelinen")
 console.log("This is a school project, not an actual product")
 
 var cart = [];
-
-resiz();
 //alert("sivu yhä työn alla.");
 var dict = {
   "nu1": "Kokoa omasi!",
   "nu2": "Boxi B",
   "nu3": "Boxi C",
   "nu4": "Boxi D"
+  // etc.
+};
+var tuotteet = {
+  "Jouluomena": "1€",
+  "Joulukuusi Pieni": "22€",
+  "Joulukuusi Normaali": "44€",
+  "Joulukuusi Iso": "66€",
+  "joulukuusen valot": "15€"
   // etc.
 };
 var sisallot_ruoka = {
@@ -380,11 +389,7 @@ function onClick(element) {
     return null;
   }
   document.getElementById("img01").src = element.src;
-  document.getElementById("img01").style.width = scal2 + "%";
-  document.getElementById("img01").style.height = scal2 + "%";
   document.getElementById("img02").src = element.src;
-  document.getElementById("img02").style.width = scal2 + "%";
-  document.getElementById("img02").style.height = scal2 + "%";
   document.getElementById("CID").id = element.id;
   document.getElementById("img01").style.filter = element.style.filter;
   document.getElementById("img02").style.filter = element.style.filter;
@@ -400,8 +405,53 @@ function showNewCart(){
   document.getElementById("modal02").style.display = "block";
   updateCUI();
 }
+
 function show3(){
+  //document.getElementById("searchgrid").innerHTML = document.getElementById("wowgrid").innerHTML;
+  var p = document.getElementById("searchV");
+  document.getElementById("myUL").innerHTML = "";
+  ul = document.getElementById("myUL");
+  var i2 = 0;
+
+  for(i2=0;i2<Object.keys(tuotteet).length;i2++){
+    var l = document.createElement("LI");
+    l.innerHTML = "<a>" + Object.keys(tuotteet)[i2] + "</a>";
+    ul.appendChild(l);
+  }
+
+  p.id = "searchV";
+  //document.getElementById("searchgrid").parentNode.insertBefore(p, document.getElementById("searchgrid") );
+  document.getElementById("search").onkeyup = function(){
+    	ps = document.getElementById("searchV");
+  	var s = "tulokset haulle " + document.getElementById("search").value + ":";
+  	ps.innerHTML = s;
+	search(document.getElementById("search").value);
+  }
+  document.getElementById("search").onkeyup();
   document.getElementById("modal03").style.display = "block";
+}
+function search(str) {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  filter = str.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName('li');
+  var results = 0;
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+      results++;
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+  if(results == 0){
+    ps = document.getElementById("searchV");
+    ps.innerHTML = "ei tuloksia";
+  }
 }
 function parseCartUrl(stri){
   console.log("Parsing the cart...");
@@ -723,17 +773,15 @@ function resiz(){
   var acc2 = document.getElementsByClassName("wowimg");
   var i2;
   var scal = 100;
-  scal2 = 100;
   
   if(isHidden(isl)){
     console.log("hidden: large");
-    scal = 100;
-	scal2 = 50;
+    scal = 75;
     
   }
   else if(isHidden(ism)){
     console.log("hidden: medium");
-    scal = 75;
+    scal = 100;
     
   }
   else if(isHidden(iss)){
@@ -769,5 +817,6 @@ function showCart(){
   }
   alert(out);
 }
+resiz();
 updateCUI();
 </script>
