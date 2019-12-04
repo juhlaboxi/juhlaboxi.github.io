@@ -278,7 +278,7 @@ body, html {
 	<div class="row" style="overflow: hidden;">
 		<div class="column">
 			<h3 class=""> Sisältää </h3>
-			<ul class="w3-ul w3-black" id="cartL" style="border: 1px solid white;">
+			<ul class="w3-ul w3-black" id="boxiL" style="border: 1px solid white;">
 			    <li >
 					<div>tuote <span class="w3-button w3-red w3" title="Close Modal Image" onclick="removeProd();"><i class="fa fa-remove"></i></span></div>
 			    </li>
@@ -388,6 +388,7 @@ var sisallot_muut_nimi = {
   "nu4": "joulutarvikkeita ▼"
   // etc.
 };
+var cboxes = [];
 var p = 0;
 //alert("Made for a school project. This is not a real product!");
 // Modal Image Gallery
@@ -518,6 +519,20 @@ function getCookie(cname) {
     }
   }
   return "";
+}
+
+var cboxs = [];
+function cleanCBox(xcbox){
+  console.log("Siistitään kustomoitua boxia...");
+  console.log("Siistittävä boxi: " + xcbox);
+  Object.keys(xcbox).forEach(key => xcbox[key] === undefined && delete obj[key]);
+  xcbox = xcbox.filter(function (el) {
+    return el != null;
+  });
+  console.log("Boxi siistitty!");
+}
+function updateCBoxUI(){
+  cleanCBox();
 }
 function updateCUI(){
   cleanCart();
@@ -768,7 +783,7 @@ console.log(acc2);
 
 for (i2 = 0; i2 < acc2.length; i2++) {
   var newText = document.createElement("p");
-  var node = document.createTextNode(acc2[i2].alt + " | " + hinnat["nu" + i2]);
+  var node = document.createTextNode(acc2[i2].alt + " | " + hinnat["nu" + (i2+1)]);
   newText.appendChild(node);
   acc2[i2].parentNode.insertBefore( newText, acc2[i2].nextSibling );
 } 
