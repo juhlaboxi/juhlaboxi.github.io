@@ -345,6 +345,13 @@ var dict = {
   "nu4": "Boxi D"
   // etc.
 };
+var hinnat = {
+  "nu1": "2€+",
+  "nu2": "40€",
+  "nu3": "10€",
+  "nu4": "20€"
+  // etc.
+}
 var tuotteet = {
   "Jouluomena": "1€",
   "Joulukuusi Pieni": "22€",
@@ -415,7 +422,7 @@ function show3(){
 
   for(i2=0;i2<Object.keys(tuotteet).length;i2++){
     var l = document.createElement("LI");
-    l.innerHTML = "<a>" + Object.keys(tuotteet)[i2] + "</a>";
+    l.innerHTML = "<a>" + Object.keys(tuotteet)[i2] + " | " + Object.values(tuotteet)[i2] + "</a>";
     ul.appendChild(l);
   }
 
@@ -754,14 +761,14 @@ for (i = 0; i < acc.length; i++) {
   });
 } 
 
-//Add subtitles
+//Add subtitles_Lisää teksit
 var acc2 = document.getElementsByClassName("wowimg");
 var i2;
 console.log(acc2);
 
 for (i2 = 0; i2 < acc2.length; i2++) {
   var newText = document.createElement("p");
-  var node = document.createTextNode(acc2[i2].alt);
+  var node = document.createTextNode(acc2[i2].alt + " | " + hinnat["nu" + i2]);
   newText.appendChild(node);
   acc2[i2].parentNode.insertBefore( newText, acc2[i2].nextSibling );
 } 
