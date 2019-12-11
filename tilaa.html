@@ -422,7 +422,7 @@ function show3(){
   var i2 = 0;
 
   for(i2=0;i2<Object.keys(tuotteet).length;i2++){
-    var l = document.createElement("LI");
+    var l = document.createElement("p");
     l.innerHTML = "<a>" + Object.keys(tuotteet)[i2] + " | " + Object.values(tuotteet)[i2] + "</a>";
     ul.appendChild(l);
   }
@@ -443,7 +443,7 @@ function search(str) {
   var input, filter, ul, li, a, i, txtValue;
   filter = str.toUpperCase();
   ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName('li');
+  li = ul.getElementsByTagName('p');
   var results = 0;
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
