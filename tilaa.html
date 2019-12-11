@@ -353,13 +353,17 @@ var hinnat = {
   // etc.
 }
 var tuotteet = {
-  " <button class='w3-button w3-green w3-text-black' onclick='addC(0)'>+</button> Jouluomena": "1€",
-  " <button class='w3-button w3-green w3-text-black' onclick='addC(0)'>+</button> Joulukuusi Pieni": "22€",
-  " <button class='w3-button w3-green w3-text-black' onclick='addC(0)'>+</button> Joulukuusi Normaali": "44€",
-  " <button class='w3-button w3-green w3-text-black' onclick='addC(0)'>+</button> Joulukuusi Iso": "66€",
-  " <button class='w3-button w3-green w3-text-black' onclick='addC(0)'>+</button> joulukuusen valot": "15€"
+  " <button class='w3-button w3-green w3-text-black' onclick='addCP(0)'>+</button> Jouluomena": "1€",
+  " <button class='w3-button w3-green w3-text-black' onclick='addCP(1)'>+</button> Joulukuusi Pieni": "22€",
+  " <button class='w3-button w3-green w3-text-black' onclick='addCP(2)'>+</button> Joulukuusi Normaali": "44€",
+  " <button class='w3-button w3-green w3-text-black' onclick='addCP(3)'>+</button> Joulukuusi Iso": "66€",
+  " <button class='w3-button w3-green w3-text-black' onclick='addCP(4)'>+</button> joulukuusen valot": "15€"
   // etc.
 };
+var cp = {};
+function addCP(num){
+	cp.push(num);
+}
 var sisallot_ruoka = {
   "nu1": "<button class='w3-button w3-yellow w3-text-black' onclick='show3()'>+</button>",
   "nu2": "jouluruokaa",
@@ -552,7 +556,7 @@ function updateCUI(){
   for (i2 = 0; i2 < cart.length; i2++) {
     var cont = document.createElement("DIV");
     var node = document.createElement("LI");                 // Create a <li> node
-    var textnode = document.createTextNode(dict[cart[i2]] + "   ");         // Create a text node
+    var textnode = document.createTextNode(dict[cart[i2]] + " | " + hinnat[cart[i2]]);         // Create a text node
     var dele = document.getElementById("dele_src").cloneNode(true);
     dele.tod = i2;
     node.appendChild(textnode);                              // Append the text to <li>
@@ -565,6 +569,13 @@ function updateCUI(){
   for (i2 = 0; i2 < myNode.children.length; i2++) {
   
   }
+  for (i2 = 0; i2 < cart.length; i2++) {
+  	console.log(hinnat[cart[i2]]);
+  }
+  var z = document.createElement("hr");
+  var pr = document.createElement("p");
+  pr.innerHTML="=" + "0" + "€";
+  //myNode.appendChild(pr);
   var icon = document.getElementById("car");
   console.log("Icon: " + icon.innerHTML);
   console.log("Icons should be: " + cart.length)
